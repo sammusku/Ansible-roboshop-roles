@@ -1,0 +1,56 @@
+- name: app-setup
+  ansible.builtin.import_role:
+   name: common
+   tasks_from: app-setup.yaml
+
+- name: install maven and mysql
+  ansible.builtin.dnf:
+     name: "{{ item }}"
+     state: present
+  loop:
+     - maven
+     - mysql
+- name: install dependencies
+  ansible.builtin.command: mvn clean package 
+  args:
+      chdir: /app
+
+- name: install dependecies
+  ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar 
+  args: 
+       chdir: /app
+
+- name: systemd-setup
+  ansible.builtin.import_role:
+   name: common
+   tasks_from: systemd-setup.yaml
+
+- name: Install python dependecies
+  ansible.builtin.pip:
+     name: "{{ item }}"
+     executable: pip3.9
+  loop:
+     - pymySQL
+     - cryptography
+  args:
+       chdir: /app
+
+- name: import shipping data 
+  community.mysql.mysql_db:
+    state: import
+    name: all
+    login_host: "{{ MYSQL_HOST }}"
+    login_user: root
+    login_password: "{{ MYSQL_ROOT_PASSWORD }}"
+    target: "{{ item }}"
+  loop:
+    - /app/db/schema.sql
+    - /app/db/app-user.sql 
+    - /app/db/master-data.sql
+
+- name: enable and start the shipping service
+  ansible.builtin.service:
+    name: shipping
+    state: restarted
+    enabled: yes
+  

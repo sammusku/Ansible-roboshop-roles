@@ -7,3 +7,4 @@ USER_HOST: user-dev.dev88s.online
 CART_HOST: cart-dev.dev88s.online
 MYSQL_HOST: mysql-dev.dev88s.online
 RABBITMQ_HOST: rabbitmq-dev.dev88s.online
+SHIPPING_HOST: shipping-dev.dev88s.online
