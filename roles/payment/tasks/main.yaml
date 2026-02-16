@@ -10,7 +10,7 @@
   loop:
   - python3
   - gcc
-  - python3-devel -y
+  - python3-devel
 
 - name: Install python dependecies
   ansible.builtin.pip:
