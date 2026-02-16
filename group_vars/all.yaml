@@ -3,3 +3,4 @@ ansible_password: DevOps321
 MONGODB_HOST: mongodb-dev.dev88s.online
 REDIS_HOST: redis-dev.dev88s.online
 USER_HOST: user-dev.dev88s.online
+CART_HOST: cart-dev.dev88s.online
