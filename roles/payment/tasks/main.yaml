@@ -4,7 +4,7 @@
    tasks_from: app-setup.yaml
 
 - name: install python3
-  anisble.builtin.dnf:
+  ansible.builtin.dnf:
    name: "{{ item }}"
    state: present
   loop:
