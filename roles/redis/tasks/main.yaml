@@ -3,14 +3,14 @@
 
 - name: install redis 
   ansible.builtin.dnf:
-  name: redis
-  state: present
+   name: redis
+   state: present
 
 - name: allow all remote connections
   ansible.builtin.replace:
-  path: /etc/redis/redis.conf
-  regexp: '127.0.0.1'
-  replace: '0.0.0.0'
+   path: /etc/redis/redis.conf
+   regexp: '127.0.0.1'
+   replace: '0.0.0.0'
 
 - name: change line in file
   ansible.builtin.lineinfile:
