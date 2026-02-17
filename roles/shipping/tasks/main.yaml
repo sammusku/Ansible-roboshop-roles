@@ -13,7 +13,7 @@
      name: "{{ item }}"
      executable: pip3.9
   loop:
-     - pymySQL
+     - pyMySQL
      - cryptography
   args:
        chdir: /app
