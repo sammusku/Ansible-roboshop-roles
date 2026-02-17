@@ -8,6 +8,11 @@
    name: common
    tasks_from: systemd-setup.yaml
 
+- name: java-setup
+  ansible.builtin.import_role:
+   name: common
+   tasks_from: java-setup.yaml
+
 - name: Install python dependecies
   ansible.builtin.pip:
      name: "{{ item }}"
@@ -24,7 +29,7 @@
     name: all
     login_host: "{{ MYSQL_HOST }}"
     login_user: root
-    login_password: Roboshop@1
+    login_password: RoboShop@1
     target: "{{ item }}"
   loop:
     - /app/db/schema.sql
