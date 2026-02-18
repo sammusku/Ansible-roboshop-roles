@@ -1,10 +1,10 @@
-- name: checking include-vs-import
+# - name: checking include-vs-import
 
-  ansible.builtin.import_role:
-  #ansible.builtin.include_role:
-   name: common
-   tasks_from: include-vs-import.yaml
-  when: os == "RedHat"
+#   ansible.builtin.import_role:
+#   #ansible.builtin.include_role:
+#    name: common
+#    tasks_from: include-vs-import.yaml
+#   when: os == "RedHat"
 
 - name: checking include-vs-import
 
