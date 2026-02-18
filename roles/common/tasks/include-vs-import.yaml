@@ -3,5 +3,5 @@
    msg: " Hi,Im from msg 1 "
 
 - name: print messages2
-  ansible.builtin.debug:
+  ansible.builtin.degbug:
    msg: " Hi,Im from msg 2 "
