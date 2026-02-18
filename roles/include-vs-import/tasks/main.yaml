@@ -1,6 +1,5 @@
 - name: checking include-vs-import
-  tags:
-  - deployment
+
   ansible.builtin.import_role:
   #ansible.builtin.include_role:
    name: common
@@ -8,8 +7,7 @@
   when: os == "RedHat"
 
 - name: checking include-vs-import
-  tags:
-  - deployment
+
   ansible.builtin.include_role:
   #ansible.builtin.import_role:
    name: common
