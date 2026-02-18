@@ -8,9 +8,7 @@
 
 - name: checking include-vs-import
   #ansible.builtin.import_role:
-  tags:
-   deployment
+  
   ansible.builtin.include_role:
    name: common
    tasks_from: include-vs-import.yaml
-   
