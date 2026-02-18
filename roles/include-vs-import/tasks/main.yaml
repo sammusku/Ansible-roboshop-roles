@@ -13,3 +13,6 @@
    name: common
    tasks_from: include.yaml
   when: os == "RedHat"
+  loop:
+   - ram
+   - cam
