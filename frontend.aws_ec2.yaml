@@ -11,5 +11,6 @@ compose:
   ansible_host: private_ip_address
 keyed_groups:
   # add hosts to tag_Name_value groups for each aws_ec2 host's tags.Name variable.
-    - seperator: " "
+    - seperator: ""
+      prefix: ""
       key: tags.Name
