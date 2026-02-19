@@ -5,18 +5,7 @@
   ansible.builtin.dnf:
     name: nginx
     state: present
-
-- name: copy nginx configuration
-  throttle: 2
-  ansible.builtin.template:
-    src: nginx.conf.j2
-    dest: /etc/nginx/nginx.conf
-  notify: restart nginx
-
-- name: daemon-reload
-  ansible.builtin.systemd_service:
-    daemon_reload: yes
-
+    
 - name: remove old nginx content
   ansible.builtin.file:
     path: /usr/share/nginx/html
@@ -38,3 +27,9 @@
     dest: /usr/share/nginx/html
     remote_src: yes
   
+- name: copy nginx configuration
+  throttle: 2
+  ansible.builtin.template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+  notify: restart nginx
