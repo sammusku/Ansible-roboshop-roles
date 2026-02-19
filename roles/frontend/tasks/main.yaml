@@ -5,7 +5,7 @@
   ansible.builtin.dnf:
     name: nginx
     state: present
-    
+
 - name: remove old nginx content
   ansible.builtin.file:
     path: /usr/share/nginx/html
@@ -26,6 +26,11 @@
     src: /tmp/frontend.zip
     dest: /usr/share/nginx/html
     remote_src: yes
+
+- name: remove default nginx
+  ansible.builtin.file:
+    state: absent
+    path: /etc/nginx/nginx.conf
   
 - name: copy nginx configuration
   throttle: 2
