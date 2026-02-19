@@ -6,22 +6,22 @@
     name: nginx
     state: present
 
-- name: remove old nginx content
+- name: Remove the entire directory
   ansible.builtin.file:
     path: /usr/share/nginx/html
     state: absent
 
-- name: recreate nginx html directory
+- name: create html directory
   ansible.builtin.file:
     path: /usr/share/nginx/html
     state: directory
 
-- name: download frontend application
+- name: download frontend
   ansible.builtin.get_url:
-    url: https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip
+    url: https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip 
     dest: /tmp/frontend.zip
 
-- name: unzip application
+- name: unarchieve frontend
   ansible.builtin.unarchive:
     src: /tmp/frontend.zip
     dest: /usr/share/nginx/html
@@ -31,8 +31,8 @@
   ansible.builtin.file:
     state: absent
     path: /etc/nginx/nginx.conf
-  
-- name: copy nginx configuration
+
+- name: copy nginx.conf
   throttle: 2
   ansible.builtin.template:
     src: nginx.conf.j2
